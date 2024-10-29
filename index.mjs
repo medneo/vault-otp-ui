@@ -35,7 +35,6 @@ router.get('/', (req, res) => {
     }else{
         console.log('got token: ' + token);
         unwrapSecret(token, vault_options, res)
-        //res.render('result', {message: data})
     }
     
 })

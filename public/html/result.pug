@@ -1,0 +1,17 @@
+html
+  link(href='static/css/result.css', rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
+  body
+    .important_content Die angezeigten Informationen sind nur einmalig abrufbar. Bitte speichern Sie diese Informationen umgehend.
+    .box
+      center
+        table(class="result-table")
+          thead
+              tr
+                th(class="result-table-header-cell") Name
+                th(class="result-table-header-cell") Wert
+          tbody
+            each val,key in data
+                tr
+                  td(class="result-table-cell") #{key}
+                  td(class="result-table-cell") #{val}

@@ -1,0 +1,39 @@
+.box {
+  border: 2px solid black;
+  padding: 20px;
+  background-color: LightGrey;
+  color: black;
+  text-align: center;
+  font-family: Montserrat;
+  width: 90%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+body{
+  background-color: #afddf3;
+  font-weight: bold;  
+}
+div{
+  padding: 15px;
+  font-family: Montserrat;
+}
+.important_content {
+  color: red;
+  text-align: center;
+}
+.result-table {
+  border-color: black;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-collapse: collapse;
+}
+.result-table-cell {
+  border: 1px solid black;
+}
+.result-table-header-cell {
+  border: 1px solid black;
+}

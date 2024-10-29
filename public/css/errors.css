@@ -1,0 +1,33 @@
+.box {
+  border: 2px solid black;
+  padding: 20px;
+  background-color: LightGrey;
+  color: black;
+  text-align: center;
+  font-family: Montserrat;
+  width: 900px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -90%);
+  border-radius: 15px;
+}
+body{
+  background-color: #afddf3;
+}
+div.a{
+  padding: 15px;
+  font-size: 150%;
+  font-family: Montserrat;
+  font-weight: bold;
+  color: FireBrick; 
+}
+p{
+  font-weight: bold;
+}
+.logo {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

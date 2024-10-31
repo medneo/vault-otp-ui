@@ -11,6 +11,16 @@ WORKDIR /home/node/app
 
 COPY --chown=node:node . .
 
+FROM base as prod
+
+ENV NODE_ENV prod
+
+RUN  npm install --omit=dev
+
+EXPOSE 8080
+
+CMD [ "node", "index.mjs" ]
+
 FROM base as test
 
 ENV NODE_ENV test
@@ -18,13 +28,3 @@ ENV NODE_ENV test
 RUN npm install --include-dev
 
 RUN npm test
-
-FROM base as prod
-
-RUN  npm install
-
-EXPOSE 8080
-
-CMD [ "node", "index.mjs" ]
-
-

@@ -20,9 +20,10 @@ pipeline {
                     'https://medneo-docker.jfrog.io',
                     'jfrogDockerRegistryCredentials',
                     {
-                        app = docker.build('vault-otp-ui:' + env.CALCULATED_DOCKER_TAG)
-                        //first push with our dedicated build tag
-                        app.push()                         
+                        // first build the test stage
+                        // that will run all tests and fail in case the tests fail
+                        sh "docker build -t medneo-docker.jfrog.io/vault-otp-ui-test:" + env.CALCULATED_DOCKER_TAG + " --target test ."
+                        sh "docker build -t medneo-docker.jfrog.io/vault-otp-ui:" + env.CALCULATED_DOCKER_TAG + " --target prod ."
                     }
               )
            }
@@ -39,8 +40,10 @@ pipeline {
                     'https://medneo-docker.jfrog.io',
                     'jfrogDockerRegistryCredentials',
                     {
-                      app.push(env.TAG_NAME.substring(8))
-                      app.push('latest')
+                      sh "docker tag medneo-docker.jfrog.io/vault-otp-ui:" + env.CALCULATED_DOCKER_TAG + " medneo-docker.jfrog.io/vault-otp-ui:" + env.TAG_NAME.substring(8)
+                      sh "docker push medneo-docker.jfrog.io/vault-otp-ui:" + env.TAG_NAME.substring(8)
+                      sh "docker tag medneo-docker.jfrog.io/vault-otp-ui:" + env.TAG_NAME.substring(8) + " medneo-docker.jfrog.io/vault-otp-ui:latest"
+                      sh "docker push medneo-docker.jfrog.io/vault-otp-ui:latest"
                     }
               )
 

@@ -7,7 +7,8 @@ jest.unstable_mockModule('tiny-json-http', () => {
     }
 });
 
-const vaultclient = require('../src/vault-client.mjs')({vaultaddr:'https://secret-manager.medneo.com'})
+const vaultclientmodule = await import('../src/vault-client.mjs')
+const vaultclient = vaultclientmodule.default({vaultaddr:'https://secret-manager.medneo.com'})
 
 //import * as client from 'tiny-json-http'
 

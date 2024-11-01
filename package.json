@@ -2,7 +2,8 @@
   "name": "unwrap-webapp",
   "version": "2.0.0",
   "description": "simple ui to allow users to unwrap vault tokens",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "test": "jest --config=jest.config.js"
   },
@@ -15,7 +16,7 @@
   "dependencies": {
     "express": "4.21.1",
     "pug": "^3.0.3",
-    "request": "^2.88.2"
+    "tiny-json-http": "^7.5.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",

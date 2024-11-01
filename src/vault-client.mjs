@@ -1,14 +1,27 @@
+import * as client  from "tiny-json-http";
 
 
-const VaultClient = class VaultClient {
-    constructor(vaulturl) {
-        this.vaulturl = vaulturl;
+
+export default function(options) {
+
+    var module = {};
+
+    module.clientoptions = options;
+    module.vaultrestresource = '/v1/sys/wrapping/unwrap';
+
+    module.getSecret = async function(token) {
+        
+        const response = await client.default.post({
+            url: this.clientoptions.vaultaddr + this.vaultrestresource,
+            data: {},
+            headers: {
+                'X-Vault-Token': token
+            }            
+        })
+        
+        return response.body
+                        
     }
+
+    return module;
 }
-
-function client(options) {
-    return new VaultClient(options.vaulturl)
-}
-
-
-module.exports = {client, VaultClient};

@@ -1,19 +1,18 @@
 
-import { client } from "../src/vault-client.mjs"
-import { VaultClient } from "../src/vault-client.mjs"
+import {expect, jest} from '@jest/globals';
 
-describe("vault client", () => {
-    
-    test("should take the vault url passed via the options parameter", () => {
-        const options = {
-            vaulturl : "foo"
-        }
-        expect(client(options).vaulturl).toBe("foo")
+jest.unstable_mockModule('tiny-json-http', () => {
+    return {
+        post: jest.fn(),
+    }
+});
+
+const vaultclient = require('../src/vault-client.mjs')({vaultaddr:'https://secret-manager.medneo.com'})
+
+//import * as client from 'tiny-json-http'
+
+describe("getSecret", ()=>{
+    test("should throw an error", async () => {
+            await expect(vaultclient.getSecret("some none existing token")).rejects.toThrowError()
     })
-
-    test("should return a VaultClient instance", () => {
-        expect(client({})).toBeInstanceOf(VaultClient)
-    })
-}
-
-)
+})
